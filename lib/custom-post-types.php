@@ -1,0 +1,5 @@
+<?php 
+
+	// ----
+	// Pieces Custom Type
+	// ----
