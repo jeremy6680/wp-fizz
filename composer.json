@@ -2,7 +2,8 @@
     "name": "your-vendor/wpfizz",
     "type": "wordpress-theme",
     "require": {
-        "timber/timber": "*"
+        "timber/timber": "*",
+        "palmiak/timber-acf-wp-blocks": "^1.14"
     },
     "license": "MIT"
 }
