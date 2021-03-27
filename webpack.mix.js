@@ -5,3 +5,4 @@ mix
     .browserSync({
         proxy: "http://wpfizz.test"
     });
+    

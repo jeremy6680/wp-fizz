@@ -22,7 +22,7 @@
 				    {% if post.comments %}
 					<h3> comments </h3>
 					{% for cmt in post.comments %}
-					    {% include "comments/comment.twig" with {comment:cmt} %}
+					    {% include "comments/index.twig" with {comment:cmt} %}
 					{% endfor %}
 				    {% endif %}
 				</div>
