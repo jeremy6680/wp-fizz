@@ -60,15 +60,12 @@ Timber::$autoescape = false;
 class StarterSite extends Timber\Site {
 	/** Add timber support. */
 	public function __construct() {
-		add_theme_support('post-formats');
-		add_theme_support('post-thumbnails');
-		add_theme_support('menus');
 		add_action( 'after_setup_theme', array( $this, 'theme_supports' ) );
 		add_filter( 'timber/context', array( $this, 'add_to_context' ) );
 		add_filter( 'timber/twig', array( $this, 'add_to_twig' ) );
 		add_action( 'init', array( $this, 'register_post_types' ) );
 		add_action( 'init', array( $this, 'register_taxonomies' ) );
-		add_action('init', array($this, 'tnj_acf_utils'));
+		add_action('init', array($this, 'wpf_acf_utils'));
 		add_action('widgets_init', array($this, 'register_sidebars'));
 		parent::__construct();
 	}
@@ -107,8 +104,6 @@ class StarterSite extends Timber\Site {
 	}
 
 	public function theme_supports() {
-		// Add default posts and comments RSS feed links to head.
-		add_theme_support( 'automatic-feed-links' );
 
 		/*
 		 * Let WordPress manage the document title.
@@ -139,24 +134,6 @@ class StarterSite extends Timber\Site {
 			)
 		);
 
-		/*
-		 * Enable support for Post Formats.
-		 *
-		 * See: https://codex.wordpress.org/Post_Formats
-		 */
-		add_theme_support(
-			'post-formats',
-			array(
-				'aside',
-				'image',
-				'video',
-				'quote',
-				'link',
-				'gallery',
-				'audio',
-			)
-		);
-
 		add_theme_support( 'menus' );
 	}
 
@@ -182,3 +159,22 @@ class StarterSite extends Timber\Site {
 }
 
 new StarterSite();
+
+	/*
+	 **************************
+	 * Custom Theme Functions *
+	 **************************
+	 *
+	 * Namespaced "wpf" - find and replace with your own three-letter-thing.
+	 * 
+	 */ 
+
+	// Enqueue scripts
+	function wpf_scripts() {
+
+		// Enqueue stylesheet and scripts. Use minified for production.
+			wp_enqueue_style( 'wpf-styles', get_stylesheet_directory_uri() . '/assets/dist/app.css', 1.0);
+			wp_enqueue_script( 'wpf-js', get_stylesheet_directory_uri() . '/assets/dist/app.js', array('jquery'), '1.0.0', true );
+
+	}
+	add_action( 'wp_enqueue_scripts', 'wpf_scripts' );
