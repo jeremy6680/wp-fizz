@@ -1,0 +1,29 @@
+{#
+  Title: Wrapper
+  Description: Wrapper
+  Category: formatting
+  Icon: layout
+  Keywords: link
+  Mode: preview
+  PostTypes: page post
+  SupportsMode: false
+  SupportsMultiple: true
+  SupportsAlign: true
+  SupportsJSX: true
+#}
+
+<section class="section {{ block.classes }}" data-{{ block.id }}>
+  <div class="container">
+    <div class="columns">
+      <div class="column is-three-fifths is-offset-one-fifth">
+        <InnerBlocks allowedBlocks="{{ ['core/image', 'core/paragraph'] | json_encode() | escape('html_attr') }}" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<style type="text/css">
+  [data-{{ block.id }}] {
+    background-color: {{ fields.background_color }};
+  }
+</style>
