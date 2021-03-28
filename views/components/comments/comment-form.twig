@@ -1,28 +1,37 @@
-<div class="comment-form" is="wpf-block-comment-form" data-{{ block.id }}>
-    <h3>{{ __('Add comment', 'wpf-theme') }}</h3>
-    <form class="comment-form" method="post" action="{{ site.site_url~'/wp-comments-post.php' }}">
-        {% if  user %}
-            <input type="hidden" name="email" value="{{ user.email }}">
-            <input type="hidden" name="author" value="{{ user.name }}">
-            <input type="hidden" name="url" value="{{ user.link }}">
-        {% else %}
-            <label>{{ __(' Email', 'wpf-theme') }}<br>
-                <input required name="email" type="email" id="email">
-            </label>
-            <label>{{ __(' Name', 'wpf-theme') }}<br>
-                <input required name="author" type="text">
-            </label>
-            <label>{{ __(' Website', 'wpf-theme') }}<br>
-                <input name="url" type="url">
-            </label>
-        {% endif %}
-        <label>{{ __(' Comment', 'wpf-theme') }}<br>
-            <textarea placeholder="Leave a comment..." name="comment" cols="60" rows="3"></textarea>
-        </label>
-        <input name="comment_post_ID" value="{{ post.id }}" type="hidden">
-        <input name="comment_parent"  value="{{ comment.ID|default('0') }}" type="hidden">
-        <button type="submit" name="Submit" class="btn">{{ __(' Send', 'wpf-theme') }}</button>
-        <button type="reset">{{ __(' Cancel', 'wpf-theme') }}</button>
-        <p>{{ __(' Your comment will be revised by the site if needed.', 'wpf-theme') }}</p>
-    </form>
-</div>
+<section class="section" is="wpf-block-comment-form" data-{{ block.id }}>
+    <div class="container py-4">
+        <div class="columns is-centered">
+        <div class="column is-8">
+            <h3 class="title is-4">{{ __('Add comment', 'wpf-theme') }}</h3>
+            <form class="comment-form" method="post" action="{{ site.site_url~'/wp-comments-post.php' }}">
+            {% if  user %}
+                <input type="hidden" name="email" value="{{ user.email }}">
+                <input type="hidden" name="author" value="{{ user.name }}">
+                <input type="hidden" name="url" value="{{ user.link }}">
+            {% else %}
+            <div class="field is-grouped">
+                <div class="control is-expanded">
+                    <input required class="input" type="email" name="email" placeholder="{{ __(' Email', 'wpf-theme') }}" id="email">
+                </div>
+                <div class="control is-expanded">
+                    <input required class="input" type="text" name="author" placeholder="{{ __(' Name', 'wpf-theme') }}">
+                </div>
+            </div>
+            {% endif %}
+            <div class="field">
+                <div class="control">
+                    <textarea class="textarea" name="comment" rows="5" placeholder="{{ __(' Write your comment...', 'wpf-theme') }}"></textarea>
+                </div>
+            </div>
+            <div class="field">
+                <div class="control">
+                    <input name="comment_post_ID" value="{{ post.id }}" type="hidden">
+                    <input name="comment_parent"  value="{{ comment.ID|default('0') }}" type="hidden">
+                    <button class="button is-primary is-fullwidth" name="Submit" type="submit">{{ __('Submit', 'wpf-theme') }}</button>
+                </div>
+            </div>
+            </form>
+        </div>
+        </div>
+    </div>
+</section>

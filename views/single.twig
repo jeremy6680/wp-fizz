@@ -5,7 +5,11 @@
 	<section class="section">
 		<div class="container has-text-centered py-4">
 			<h1 class="title is-2 is-spaced">{{post.title}}</h1>
-          	<p class="subtitle"><span>{{ __('Posted on', 'wpf-theme') }} {{ post.date|date('F j, Y') }}, {{ __('by', 'wpf-theme') }} </span><a href="{{post.author.path}}">{{ post.author.name }}</a></p>
+          	<p class="subtitle">
+			  <span>{{ __('Posted on', 'wpf-theme') }} {{ post.date|date('F j, Y') }}, {{ __('by', 'wpf-theme') }} </span>
+			  <a href="{{post.author.path}}">{{ post.author.name }}</a> 
+			  <span>{{ __('in', 'wpf-theme') }} {{ post.terms( {query:{taxonomy:'category', orderby:'name', order: 'ASC'}} )|join(', ') }}</span>
+			</p>
 			{% if post.thumbnail %}
 			<div class="my-6"><img src="{{ post.thumbnail.src|resize(1200, 400) }}" alt=""></div>
 			{% endif %}
@@ -13,13 +17,24 @@
             <div class="column is-8">
               <div class="content">
 			  	{{post.content}}
-				<div class="tags"><a class="tag is-primary" href="#">Decentralization</a><a class="tag is-primary" href="#">Infrastructureless</a><a class="tag is-primary" href="#">Pied Piper</a><a class="tag is-primary" href="#">Security</a><a class="tag is-primary" href="#">Dinesh</a></div>
+
+				{% if post.terms( {query:{taxonomy:'tag', orderby:'name', order: 'ASC'}} ) %}
+				<div class="tags">
+				{% for item in post.terms( {query:{taxonomy:'tag', orderby:'name', order: 'ASC'}} ) %}
+				<a class="tag is-primary" href="{{item.link}}">{{item}}</a>
+				{% endfor %}
+				</div>
+				{% endif %}
 			  </div>
 			</div>
 		  </div>
 		  <a href="{{ post.edit_link }}">{{ _e('edit') }}</a>
 		</div>
 	</section>	
+
+	{% block comment %}
+		{% include 'comments/index.twig' %}
+	{% endblock %}
 </article>
 
 {% endblock %}
