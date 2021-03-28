@@ -65,6 +65,7 @@ class StarterSite extends Timber\Site {
 		add_filter( 'timber/twig', array( $this, 'add_to_twig' ) );
 		add_action( 'init', array( $this, 'register_post_types' ) );
 		add_action( 'init', array( $this, 'register_taxonomies' ) );
+		add_action( 'init', array( $this, 'register_menus' ) );
 		add_action('init', array($this, 'wpf_acf_utils'));
 		add_action('widgets_init', array($this, 'register_sidebars'));
 		parent::__construct();
@@ -78,7 +79,7 @@ class StarterSite extends Timber\Site {
 		require('lib/taxonomies.php');
 	}
 
-	public function register_menus() {
+	public function register_menus(){
 		require('lib/menus.php');
 	}
 
@@ -86,21 +87,8 @@ class StarterSite extends Timber\Site {
 		require('lib/widgets.php');
 	}
 
-	public function tsk_acf_utils() {
+	public function wpf_acf_utils() {
 		require('lib/acf-utils.php');
-	}
-
-	/** This is where you add some context
-	 *
-	 * @param string $context context['this'] Being the Twig's {{ this }}.
-	 */
-	public function add_to_context( $context ) {
-		$context['foo']   = 'bar';
-		$context['stuff'] = 'I am a value set in your functions.php file';
-		$context['notes'] = 'These values are available everytime you call Timber::context();';
-		$context['menu']  = new Timber\Menu();
-		$context['site']  = $this;
-		return $context;
 	}
 
 	public function theme_supports() {
@@ -135,6 +123,20 @@ class StarterSite extends Timber\Site {
 		);
 
 		add_theme_support( 'menus' );
+	}
+
+	/** This is where you add some context
+	 *
+	 * @param string $context context['this'] Being the Twig's {{ this }}.
+	 */
+	public function add_to_context( $context ) {
+		$context['foo']   = 'bar';
+		$context['stuff'] = 'I am a value set in your functions.php file';
+		$context['notes'] = 'These values are available everytime you call Timber::context();';
+		$context['primary_menu']  = new Timber\Menu('primary_menu');
+		$context['footer_menu'] = new Timber\Menu('footer_menu');
+		$context['site']  = $this;
+		return $context;
 	}
 
 	/** This Would return 'foo bar!'.
