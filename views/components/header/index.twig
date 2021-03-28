@@ -1,7 +1,10 @@
 {% block header %}
   <nav class="navbar" is="wpf-block-header" data-{{ block.id }}>
     <div class="container">
-      <div class="navbar-brand"><a class="navbar-item" href="#"><img src="{{site.theme.link}}/assets/src/img/cover.png" alt="{{site.name}}" width="100"></a><a class="navbar-burger" role="button" aria-label="menu" aria-expanded="false"><span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span></a>
+      <div class="navbar-brand"><a class="navbar-item" href="{{ site.link }}">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 264.426 60" class="font logo"><path d="M0 60L1.366 0h17.377l-3.716 41.093h.765L28.69 0H45.19l-1.53 41.093h.765L55.246 0h17.596L53.06 60H32.131l1.967-41.366h-.546L20.984 60H0zm68.525 0L79.07 0H99.29q5.19 0 8.961 2.022 3.77 2.022 5.738 5.738 1.967 3.715 1.967 8.688 0 2.295-.437 4.809-1.038 5.847-4.371 10.11-3.28 4.261-8.143 6.556-4.918 2.24-10.546 2.24h-3.661L85.3 60H68.525zm22.35-31.694h1.803q1.42 0 2.841-1.257 1.42-1.311 2.46-3.442 1.092-2.186 1.53-4.755.218-1.202.218-2.13 0-3.826-3.497-3.826h-2.623l-2.733 15.41zM131.802 60L142.35 0h33.17l-2.46 14.098h-16.284l-1.585 8.798h13.334l-2.46 14.044h-13.333L148.634 60h-16.83zm47.76-49.29L181.475 0h16.23l-1.858 10.71h-16.284zM170.71 60l7.815-44.536h16.448L187.103 60H170.71zm59.618-44.536l-1.913 11.858-14.918 20.93h11.257L222.678 60h-29.29l1.858-11.311 16.667-21.53H199.29l2.021-11.695h29.017zm34.098 0l-1.858 11.858-14.972 20.93h11.256L256.776 60h-29.29l1.858-11.311 16.667-21.53h-12.623l2.022-11.695h29.016z"/></svg>
+      </a>
+      <a class="navbar-burger" role="button" aria-label="menu" aria-expanded="false"><span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span></a>
       </div>
       {% if primary_menu %}
       <div class="navbar-menu">
