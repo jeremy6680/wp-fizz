@@ -2,5 +2,11 @@
 @import '../../../assets/src/scss/custom-variables';
 
 [is="wpf-block-footer"] {
-    
+    a {
+        color: inherit;
+
+        &:hover {
+            color: $link;
+        }
+    }
 }

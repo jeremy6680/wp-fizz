@@ -1,5 +1,27 @@
 {% extends "base.twig" %}
 
 {% block content %}
-	{{ __(' Sorry, we couldn't find what you're looking for.', 'wpf-theme') }}
+      <section class="section">
+        <div class="container has-text-centered">
+          <div class="columns is-centered">
+            <div class="column is-7">
+              <h1 class="title is-1">404</h1>
+              <p class="subtitle is-3">{{ __("Page not found", 'wpf-theme') }}</p>
+              <p>{{ __("Sorry, we couldn't find what you're looking for.", 'wpf-theme') }}</p>
+            </div>
+          </div>
+          <div class="columns is-centered">
+            <div class="column is-6 is-4-desktop">
+              <div class="field is-grouped">
+                <div class="control is-expanded">
+                  <input class="input" type="text" placeholder="Search for page" aria-label="Search for page">
+                </div>
+                <div class="control">
+                  <button class="button is-primary" id="input-pages-01">{{ __('Search', 'wpf-theme') }}</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 {% endblock %}

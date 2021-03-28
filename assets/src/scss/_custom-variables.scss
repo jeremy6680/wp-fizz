@@ -1,9 +1,11 @@
-$link: #F58634;
+/* WP Fizz Color palette: https://icolorpalette.com/ff69b4_ff1493_06b6ae_f2e82e_2c9c1e */
+$primary: #FF1493;
+$link: #06b6ae;
 $grey-darker: hsl(0, 0%, 21%);
 $dark: $grey-darker;
 $body-color: $dark;
-$background: #ffcc29;
-$primary: #F58634;
+$background: #f2e82e;
+
 $button-background-color: $primary;
 $family-sans-serif: "Noto Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 $subtitle-family: false;
