@@ -1,4 +1,5 @@
 {
     "/assets/dist/app.js": "/assets/dist/app.js",
-    "/assets/dist/components.css": "/assets/dist/components.css"
+    "/assets/dist/components.css": "/assets/dist/components.css",
+    "/assets/dist/app.css": "/assets/dist/app.css"
 }

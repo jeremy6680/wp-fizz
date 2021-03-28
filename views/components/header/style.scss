@@ -1,6 +1,9 @@
+// Import variables
+@import '../../../assets/src/scss/custom-variables';
+
 [is="wpf-block-header"] {
     .logo {
         width: 140px;
-        fill: $test;
+        fill:$primary;
     }
 }
