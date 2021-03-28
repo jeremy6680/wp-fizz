@@ -174,6 +174,7 @@ new StarterSite();
 
 		// Enqueue stylesheet and scripts. Use minified for production.
 			wp_enqueue_style( 'wpf-styles', get_stylesheet_directory_uri() . '/assets/dist/app.css', 1.0);
+			wp_enqueue_style( 'wpf-components', get_stylesheet_directory_uri() . '/assets/dist/components.css', 1.0);
 			wp_enqueue_script( 'wpf-js', get_stylesheet_directory_uri() . '/assets/dist/app.js', array('jquery'), '1.0.0', true );
 
 	}

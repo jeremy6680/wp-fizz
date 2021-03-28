@@ -1,15 +1,17 @@
 {% block header %}
-  <nav class="navbar">
+  <nav class="navbar" is="wpf-block-header" data-{{ block.id }}>
     <div class="container">
-      <div class="navbar-brand"><a class="navbar-item" href="#"><img src="{{site.theme.link}}/assets/src/img/cover.png" alt="{{site.name}}" width="100"></a><a class="navbar-burger" role="button" aria-label="menu" aria-expanded="false"><span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span></a></div>
+      <div class="navbar-brand"><a class="navbar-item" href="#"><img src="{{site.theme.link}}/assets/src/img/cover.png" alt="{{site.name}}" width="100"></a><a class="navbar-burger" role="button" aria-label="menu" aria-expanded="false"><span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span></a>
+      </div>
+      {% if menu %}
       <div class="navbar-menu">
         <div class="navbar-start">
-          <a class="navbar-item" href="#">Features</a> 
-          <a class="navbar-item" href="#">Setup</a>                                                                                
-          <a class="navbar-item" href="#">Github</a>
-          <a class="navbar-item" href="#"></a>
+          {% for item in items %}
+          <a class="navbar-item {{ item.classes | join(' ') }}" href="{{ item.link }}">{{ item.title }}</a>       
+          {% endfor %}
         </div>
       </div>
+      {% endif %}
     </div>
   </nav>
 {% endblock %}
