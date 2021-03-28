@@ -1,14 +1,17 @@
 {% block wrapper %}
-<section class="section {{ block.classes }}" is="wpf-block-wrapper" data-{{ block.id }}>
-  <div class="container">
-    <div class="columns">
-      <div class="column is-three-fifths is-offset-one-fifth">
-        <InnerBlocks allowedBlocks="{{ ['core/heading', 'core/paragraph', 'core/image'] | json_encode() | escape('html_attr') }}" />
+<section class="section {{ block.classes }}" id="post-{{post.ID}}" is="wpf-block-wrapper" data-{{ block.id }}>
+	<div class="container">
+    <div class="columns is-centered has-text-left" >
+      <div class="column is-8">
+        <div class="content">
+          <InnerBlocks allowedBlocks="{{ ['core/heading', 'core/paragraph', 'core/image'] | json_encode() | escape('html_attr') }}" />
+        </div>
       </div>
     </div>
   </div>
 </section>
 {% endblock %}
+
 <style type="text/css">
   [data-{{ block.id }}] {
     background-color: {{ fields.background_color }};

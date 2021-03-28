@@ -1,14 +1,15 @@
 {% extends "base.twig" %}
 
 {% block content %}
-	<div class="content-wrapper">
-		<article class="post-type-{{post.post_type}}" id="post-{{post.ID}}">
-			<section class="article-content">
-				<h1 class="title is-2  article-h1">{{post.title}}</h1>
-				<div class="article-body">
-					{{post.content}}
-				</div>
-			</section>
-		</article>
-	</div><!-- /content-wrapper -->
+<article class="post-type-{{post.post_type}}" id="post-{{post.ID}}">
+	<section class="section">
+		<div class="container has-text-centered py-4">
+			<h1 class="title is-2 is-spaced">{{post.title}}</h1>
+			{% if post.thumbnail %}
+			<div class="my-6"><img src="{{ post.thumbnail.src }}" alt=""></div>
+			{% endif %}
+		</div>
+	</section>	
+	{{post.content}}
+</article>
 {% endblock %}
