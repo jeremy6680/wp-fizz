@@ -42,6 +42,30 @@ if ( ! class_exists( 'Timber' ) ) {
 }
 
 /**
+ *  Load ACF
+ *  cf https://www.advancedcustomfields.com/resources/including-acf-within-a-plugin-or-theme/
+ */
+
+// Define path and URL to the ACF plugin.
+define( 'MY_ACF_PATH', get_stylesheet_directory() . '/vendor/advanced-custom-fields/advanced-custom-fields-pro/' );
+define( 'MY_ACF_URL', get_stylesheet_directory_uri() . '/vendor/advanced-custom-fields/advanced-custom-fields-pro/' );
+
+// Include the ACF plugin.
+include_once( MY_ACF_PATH . 'acf.php' );
+
+// Customize the url setting to fix incorrect asset URLs.
+add_filter('acf/settings/url', 'my_acf_settings_url');
+function my_acf_settings_url( $url ) {
+    return MY_ACF_URL;
+}
+
+// (Optional) Hide the ACF admin menu item.
+add_filter('acf/settings/show_admin', 'my_acf_settings_show_admin');
+function my_acf_settings_show_admin( $show_admin ) {
+    return false;
+}
+
+/**
  * Sets the directories (inside your theme) to find .twig files
  */
 Timber::$dirname = array( 'templates/', 'views/', 'views/components/' );
@@ -66,6 +90,7 @@ class StarterSite extends Timber\Site {
 		add_action( 'init', array( $this, 'register_post_types' ) );
 		add_action( 'init', array( $this, 'register_taxonomies' ) );
 		add_action( 'init', array( $this, 'register_menus' ) );
+		add_action( 'init', array( $this, 'register_custom_fields' ) );
 		add_action('init', array($this, 'wpf_acf_utils'));
 		add_action('widgets_init', array($this, 'register_sidebars'));
 		parent::__construct();
@@ -81,6 +106,10 @@ class StarterSite extends Timber\Site {
 
 	public function register_menus(){
 		require('lib/menus.php');
+	}
+
+	public function register_custom_fields(){
+		require('lib/custom-fields.php');
 	}
 
 	public function register_sidebars() {
