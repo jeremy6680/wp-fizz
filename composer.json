@@ -4,7 +4,9 @@
     "require": {
         "timber/timber": "*",
         "palmiak/timber-acf-wp-blocks": "^1.14",
-        "advanced-custom-fields/advanced-custom-fields-pro": "^5.9"
+        "advanced-custom-fields/advanced-custom-fields-pro": "^5.9",
+        "wordplate/acf": "^9.1",
+        "johnbillion/extended-cpts": "^4.5"
     },
     "license": "MIT",
     "repositories": [
