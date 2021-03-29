@@ -5,7 +5,6 @@
         "timber/timber": "*",
         "advanced-custom-fields/advanced-custom-fields-pro": "^5.9",
         "johnbillion/extended-cpts": "^4.5",
-        "palmiak/timber-acf-wp-blocks": "^1.14",
         "wordplate/acf": "^9.1"
     },
     "license": "MIT",

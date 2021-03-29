@@ -9,9 +9,33 @@
  */
 
 
+add_action( 'init', 'acf_load', 1 );
 
+function acf_load() {
+	/**
+	*  Load ACF
+	*  cf https://www.advancedcustomfields.com/resources/including-acf-within-a-plugin-or-theme/
+	*/
 
+	   // Define path and URL to the ACF plugin.
+	   define( 'MY_ACF_PATH', get_stylesheet_directory() . '/vendor/advanced-custom-fields/advanced-custom-fields-pro/' );
+	   define( 'MY_ACF_URL', get_stylesheet_directory_uri() . '/vendor/advanced-custom-fields/advanced-custom-fields-pro/' );
 
+	   // Include the ACF plugin.
+	   include_once( MY_ACF_PATH . 'acf.php' );
+
+	   // Customize the url setting to fix incorrect asset URLs.
+	   add_filter('acf/settings/url', 'my_acf_settings_url');
+	   function my_acf_settings_url( $url ) {
+		   return MY_ACF_URL;
+	   }
+
+	   // (Optional) Hide the ACF admin menu item.
+	   add_filter('acf/settings/show_admin', 'my_acf_settings_show_admin');
+	   function my_acf_settings_show_admin( $show_admin ) {
+		   return false;
+	   }
+}
 
 
 /**
@@ -68,7 +92,6 @@ Timber::$autoescape = false;
 class StarterSite extends Timber\Site {
 	/** Add timber support. */
 	public function __construct() {
-		add_action( 'init', array( $this, 'acf_load' ), 1 );
 		add_action( 'after_setup_theme', array( $this, 'theme_supports' ) );
 		add_filter( 'timber/context', array( $this, 'add_to_context' ) );
 		add_filter( 'timber/twig', array( $this, 'add_to_twig' ) );
@@ -77,37 +100,10 @@ class StarterSite extends Timber\Site {
 		add_action( 'init', array( $this, 'register_menus' ) );
 		add_action( 'init', array( $this, 'register_custom_fields' ) );
 		add_action('init', array($this, 'wpf_acf_utils') );
-		//add_action('acf/init', array($this, 'wpf_register_blocks') );
+		add_action('acf/init', array($this, 'wpf_register_blocks') );
 		add_action('widgets_init', array($this, 'register_sidebars') );
 		parent::__construct();
 	}
-
-	function acf_load() {
-		 /**
-		 *  Load ACF
-		 *  cf https://www.advancedcustomfields.com/resources/including-acf-within-a-plugin-or-theme/
-		 */
-	
-			// Define path and URL to the ACF plugin.
-			define( 'MY_ACF_PATH', get_stylesheet_directory() . '/vendor/advanced-custom-fields/advanced-custom-fields-pro/' );
-			define( 'MY_ACF_URL', get_stylesheet_directory_uri() . '/vendor/advanced-custom-fields/advanced-custom-fields-pro/' );
-	
-			// Include the ACF plugin.
-			include_once( MY_ACF_PATH . 'acf.php' );
-	
-			// Customize the url setting to fix incorrect asset URLs.
-			add_filter('acf/settings/url', 'my_acf_settings_url');
-			function my_acf_settings_url( $url ) {
-				return MY_ACF_URL;
-			}
-	
-			// (Optional) Hide the ACF admin menu item.
-			add_filter('acf/settings/show_admin', 'my_acf_settings_show_admin');
-			function my_acf_settings_show_admin( $show_admin ) {
-				return false;
-			}
-	}
-
 
 	/** This is where you can register custom post types. */
 	public function register_post_types() {
