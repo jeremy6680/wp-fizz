@@ -1,9 +1,20 @@
-<article class="tease tease-{{post.post_type}}" id="tease-{{post.ID}}" is="wpf-block-tease" data-{{ block.id }}>
-	{% block content %}
-		<h2 class="h2"><a href="{{post.link}}">{{post.title}}</a></h2>
-		<p>{{post.preview}}</p>
-		{% if post.get_thumbnail %}
-			<img src="{{post.thumbnail.src}}" />
-		{% endif %}
-	{% endblock %}
-</article>
+{% block content %}
+<div class="column is-6-tablet is-3-widescreen tease tease-{{post.post_type}}" id="tease-{{post.ID}}" is="wpf-block-tease" data-{{ block.id }}>
+	<div class="card" style="height: 100%">
+		<div class="card-image">
+			<a href="{{post.link}}">
+			{% if post.thumbnail.src %}
+				<img src="{{post.thumbnail.src}}" alt="">
+			{% endif %}
+			</a>
+		</div>
+		<div class="card-content">
+			<div class="block">
+				<small class="is-size-7">{{ post.date|date('F j, Y') }} | {{ post.author.name }}</small>
+			</div>
+			<h5 class="title is-6"><a href="{{post.link}}">{{post.title}}</a></h5>
+			<p>{{post.preview.length(28)}}</p>
+		</div>
+	</div>
+</div>
+{% endblock %}
