@@ -1,0 +1,14 @@
+{#
+/**
+ * Block Name: Example block
+ *
+ * This is the template that displays the example block.
+ */
+#}
+
+{# This markup will be rendered in the block. #}
+{% include 'example/index.twig' %}
+
+{% if is_preview %}
+    <p>I will only appear in the editor.</p>
+{% endif %}

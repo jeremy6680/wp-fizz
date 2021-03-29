@@ -101,6 +101,7 @@ class StarterSite extends Timber\Site {
 		add_action( 'init', array( $this, 'register_custom_fields' ) );
 		add_action('init', array($this, 'wpf_acf_utils') );
 		add_action('acf/init', array($this, 'wpf_register_blocks') );
+		add_action('acf/init', array($this, 'wpf_display_blocks') );
 		add_action('widgets_init', array($this, 'register_sidebars') );
 		parent::__construct();
 	}
@@ -131,7 +132,11 @@ class StarterSite extends Timber\Site {
 	}
 
 	public function wpf_register_blocks() {
-		require('lib/gutenberg-blocks.php');
+		require('lib/blocks-register.php');
+	}
+
+	public function wpf_display_blocks() {
+		require('lib/blocks-callback.php');
 	}
 
 	public function theme_supports() {
