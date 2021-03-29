@@ -3,7 +3,14 @@
     "type": "wordpress-theme",
     "require": {
         "timber/timber": "*",
-        "palmiak/timber-acf-wp-blocks": "^1.14"
+        "palmiak/timber-acf-wp-blocks": "^1.14",
+        "advanced-custom-fields/advanced-custom-fields-pro": "^5.9"
     },
-    "license": "MIT"
+    "license": "MIT",
+    "repositories": [
+        {
+          "type": "composer",
+          "url": "https://pivvenit.github.io/acf-composer-bridge/composer/v3/library/" 
+        }
+      ]
 }
