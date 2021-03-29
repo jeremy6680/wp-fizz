@@ -9,10 +9,9 @@
 			{% for post in posts %}
 				{% include ['tease/tease-'~post.post_type~'.twig', 'tease/index.twig'] %}
 			{% endfor %}
-			{% include 'pagination/index.twig' with { pagination: posts.pagination({show_all: false, mid_size: 3, end_size: 2}) } %}
 			</div>
-			<div class="buttons is-centered"><a class="button is-primary" href="#">{{ __('Read more', 'wpf-theme') }}</a></div>
 		</div>
+		{% include 'pagination/index.twig' with { pagination: posts.pagination({show_all: false, mid_size: 3, end_size: 2}) } %}
 	</section>
 </div>		
 {% endblock %}

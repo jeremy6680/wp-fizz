@@ -1,64 +1,23 @@
 {% if posts.pagination.pages is not empty %}
-    <nav class="pagination-block" is="wpf-block-pagination" data-{{ block.id }}>
-        <ul class="pagination">
-
-            {# First #}
-            {% if posts.pagination.pages|first and posts.pagination.pages|first.current != true %}
-                <li class="first btn">
-                    <a href="{{ posts.pagination.pages|first.link }}">{{ __(' First', 'wpf-theme') }}</a>
-                </li>
-            {% else %}
-                <li class="first btn disabled">
-                    <button disabled>{{ __(' First', 'wpf-theme') }}</button>
-                </li>
-            {% endif %}
-
-            {# Previous #}
-            {% if posts.pagination.prev %}
-                <li class="prev btn">
-                    <a href="{{ posts.pagination.prev.link }}">{{ __(' Previous', 'wpf-theme') }}</a>
-                </li>
-            {% else %}
-                <li class="prev btn disabled">
-                    <button disabled>{{ __(' Previous', 'wpf-theme') }}</button>
-                </li>
-            {% endif %}
-
-            {# Pages #}
+      <nav class="pagination-block" is="wpf-block-pagination" data-{{ block.id }}>
+        <div class="container">
+          <div class="pagination is-centered" role="navigation" aria-label="pagination">
+            <a class="pagination-previous" href="{{ posts.pagination.prev.link }}">{{ __(' Previous', 'wpf-theme') }}</a>
+            <a class="pagination-next" href="{{ posts.pagination.next.link }}">{{ __(' Next', 'wpf-theme') }}</a>
+            <ul class="pagination-list">
             {% for page in posts.pagination.pages %}
                 {% if page.link %}
                     <li>
-                        <a href="{{ page.link }}" class="{{ page.class }}">{{ page.title }}</a>
+                        <a class="pagination-link" aria-label="Goto page {{ page.title }}" href="{{ page.link }}">{{ page.title }}</a>
                     </li>
                 {% else %}
                     <li class="current">
-                        <span class="{{ page.class }}">{{ page.title }}</span>
+                        <a href="#" class="pagination-link is-current" aria-label="Page {{ page.title }}" aria-current="page">{{ page.title }}</a>
                     </li>
                 {% endif %}
             {% endfor %}
-
-            {# Next #}
-            {% if posts.pagination.next %}
-                <li class="next btn">
-                    <a href="{{ posts.pagination.next.link }}">N{{ __(' Next', 'wpf-theme') }}ext</a>
-                </li>
-            {% else %}
-                <li class="next btn disabled">
-                    <button disabled>{{ __(' Next', 'wpf-theme') }}</button>
-                </li>
-            {% endif %}
-
-            {# Last #}
-            {% if posts.pagination.pages|last and posts.pagination.pages|last.current != true %}
-                <li class="last btn">
-                    <a href="{{ posts.pagination.pages|last.link }}">{{ __(' Last', 'wpf-theme') }}</a>
-                </li>
-            {% else %}
-                <li class="last btn disabled">
-                    <button disabled>{{ __(' Last', 'wpf-theme') }}</button>
-                </li>
-            {% endif %}
-
-        </ul>
-    </nav>
+            </ul>
+          </div>
+        </div>
+      </nav>
 {% endif %}
