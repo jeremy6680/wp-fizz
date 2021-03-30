@@ -15,3 +15,14 @@
         'icon'            => 'index-card',
         'keywords'        => array( 'cards' ),
     ) );
+
+    acf_register_block_type( array(
+        'name'			=> 'wrapper',
+        'title'			=> __( 'Wrapper', 'wpf-theme' ),
+        'render_template'	=> 'wrapper_block_render_callback',
+        'mode'			=> 'preview',
+        'supports'		=> [
+            'align'			=> false,
+            'jsx' 			=> true,
+        ]
+    ));
