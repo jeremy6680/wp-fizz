@@ -20,5 +20,5 @@ function cards_block_render_callback( $block, $content = '', $is_preview = false
     $context['is_preview'] = $is_preview;
 
     // Render the block.
-    Timber::render( 'blocks/cards-block/cards-block.twig', $context );
+    Timber::render( 'components/cards/index.twig', $context );
 }
