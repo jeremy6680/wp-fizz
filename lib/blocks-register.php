@@ -7,16 +7,6 @@
 
     // Register a new block.
     acf_register_block_type( array(
-        'name'            => 'example_block',
-        'title'           => __( 'Example Block', 'your-text-domain' ),
-        'description'     => __( 'A custom example block.', 'your-text-domain' ),
-        'render_callback' => 'my_acf_block_render_callback',
-        'category'        => 'formatting',
-        'icon'            => 'admin-comments',
-        'keywords'        => array( 'example' ),
-    ) );
-
-    acf_register_block_type( array(
         'name'            => 'cards_block',
         'title'           => __( 'Cards Block', 'wpf-theme' ),
         'description'     => __( 'A block to highlights 3 posts', 'wpf-theme' ),
