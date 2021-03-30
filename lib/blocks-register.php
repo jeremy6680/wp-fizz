@@ -21,8 +21,12 @@
         'title'			=> __( 'Wrapper', 'wpf-theme' ),
         'render_template'	=> 'wrapper_block_render_callback',
         'mode'			=> 'preview',
+        'category'      => 'formatting',
+        'post_type'     => 'page',
         'supports'		=> [
-            'align'			=> false,
-            'jsx' 			=> true,
+            'mode'          => false,
+            'multiple'      => true,
+            'align'			=> true,
+            'jsx' 			=> true,        
         ]
     ));
