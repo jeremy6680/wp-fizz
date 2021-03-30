@@ -11,8 +11,21 @@ use WordPlate\Acf\Fields\Text;
 use WordPlate\Acf\Fields\Textarea;
 use WordPlate\Acf\Fields\Image;
 use WordPlate\Acf\Fields\Relationship;
+use WordPlate\Acf\Fields\Taxonomy;
 use WordPlate\Acf\Location;
 
+// Custom Fields to add extra info to Pages
+register_extended_field_group([
+	'title' => 'Page info',
+    'fields' => [
+        Text::make('Subtitle'),
+    ],
+    'location' => [
+        Location::if('post_type', 'page')
+    ],
+]);
+
+// Custom Fields for Single Doc Post
 register_extended_field_group([
 	'title' => 'Extra info',
 	'fields' => [
@@ -31,27 +44,7 @@ register_extended_field_group([
 	  ],
   ]);
 
-  register_extended_field_group([
-	'title' => 'Page info',
-    'fields' => [
-        Text::make('Subtitle'),
-    ],
-    'location' => [
-        Location::if('post_type', 'page')
-    ],
-]);
-
-register_extended_field_group([
-    'title' => 'Example',
-    'fields' => [
-        Text::make('Title'),
-		Text::make('Description'),
-    ],
-    'location' => [
-        Location::if('block', 'acf/example-block')
-    ],
-]);
-
+// Custom Fields for Cards
 register_extended_field_group([
 	'title' => 'Cards',
 	'fields' => [
@@ -59,7 +52,11 @@ register_extended_field_group([
 	  ->instructions('Add a card.')
 	  ->fields([
 		Image::make('Image'),
-		Text::make('Label'),
+		Taxonomy::make('Category')
+			->instructions('Select one term.')
+			->taxonomy('label')
+			->appearance('select') // checkbox, multi_select, radio or select
+			->returnFormat('object'), // object or id (default)
 		Relationship::make('Posts')
 		->instructions('Add posts')
 		->postTypes(['docs'])

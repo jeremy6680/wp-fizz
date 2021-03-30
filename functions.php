@@ -69,7 +69,7 @@ class StarterSite extends Timber\Site {
 		add_action( 'after_setup_theme', array( $this, 'theme_supports' ) );
 		add_filter( 'timber/context', array( $this, 'add_to_context' ) );
 		add_filter( 'timber/twig', array( $this, 'add_to_twig' ) );
-		add_action( 'init', array( $this, 'acf_load' ),  4);
+		add_action( 'init', array( $this, 'acf_load' ), 4 );
 		add_action( 'init', array( $this, 'register_post_types' ) );
 		add_action( 'init', array( $this, 'register_taxonomies' ) );
 		add_action( 'init', array( $this, 'register_menus' ) );
