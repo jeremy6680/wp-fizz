@@ -1,10 +1,23 @@
 {% extends "base.twig" %}
 
 {% block content %}
-<div class="container is-fluid">
+<article class="post-type-{{post.post_type}}" id="post-{{post.ID}}">
+  <section class="section pb-0">
+      <div class="container py-4">
+        <div class="columns">
+          <div class="column">
+            <h2 class="title">{{title}}</h2>
+          </div>
+		  {% if post.subtitle %}
+          <div class="column">
+            <p class="subtitle">{{post.subtitle}}</p>
+          </div>
+		  {% endif %}
+        </div>
+      </div>
+  </section>
 	<section class="section">
 		<div class="container py-4">
-			<h2 class="title has-text-centered mb-6">{{ __('The WP Fizz Blog', 'wpf-theme') }}</h2>
 			<div class="columns is-multiline mb-6">
 			{% for post in posts %}
 				{% include ['tease/tease-'~post.post_type~'.twig', 'tease/index.twig'] %}
@@ -13,5 +26,5 @@
 		</div>
 		{% include 'pagination/index.twig' with { pagination: posts.pagination({show_all: false, mid_size: 3, end_size: 2}) } %}
 	</section>
-</div>		
+</article>
 {% endblock %}

@@ -8,6 +8,7 @@
 use WordPlate\Acf\Fields\Repeater;
 use WordPlate\Acf\Fields\Url;
 use WordPlate\Acf\Fields\Text;
+use WordPlate\Acf\Fields\Textarea;
 use WordPlate\Acf\Fields\Image;
 use WordPlate\Acf\Fields\Relationship;
 use WordPlate\Acf\Location;
@@ -29,6 +30,16 @@ register_extended_field_group([
 		  Location::if('post_type', 'docs'),
 	  ],
   ]);
+
+  register_extended_field_group([
+	'title' => 'Page info',
+    'fields' => [
+        Text::make('Subtitle'),
+    ],
+    'location' => [
+        Location::if('post_type', 'page')
+    ],
+]);
 
 register_extended_field_group([
     'title' => 'Example',
