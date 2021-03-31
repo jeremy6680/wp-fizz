@@ -1,0 +1,9 @@
+// Import variables
+@import '../../../assets/src/scss/custom-variables';
+
+[is="wpf-block-search"] {
+    .logo {
+        width: 140px;
+        fill:$primary;
+    }
+}

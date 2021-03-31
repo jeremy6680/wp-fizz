@@ -1,3 +1,16 @@
 .number.has-background-primary {
     color: #fff;
 }
+
+p {
+    margin: 20px auto;
+    line-height: 1.6;
+}
+
+main p:first-of-type {
+    margin-top: 80px;
+}
+
+p:empty::before {
+    content: none !important;
+  }

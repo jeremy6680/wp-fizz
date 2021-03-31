@@ -2,11 +2,11 @@
 
 {% block content %}
 <article class="post-type-{{post.post_type}}" id="post-{{post.ID}}">
-  <section class="section pb-4">
+  <section class="section pb-0">
       <div class="container py-4">
         <div class="columns">
           <div class="column">
-            <h1 class="title {% if post.subtitle %}{% else %}has-text-centered{% endif %}">{{post.title}}</h1>
+            <h2 class="title {% if post.subtitle %}{% else %}has-text-centered{% endif %}">{{post.title}}</h2>
           </div>
 		  {% if post.subtitle %}
           <div class="column">
@@ -14,14 +14,10 @@
           </div>
 		  {% endif %}
         </div>
-        <div class="columns is-centered has-text-left">
-          <div class="column is-8">
-            <div class="content">
-              {{post.content}}
-            </div>
-          </div>
-        </div>
       </div>
   </section>
+  <main class="page-content">
+    {{post.content}}
+  </main>
 </article>
 {% endblock %}
