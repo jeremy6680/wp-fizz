@@ -1,0 +1,16 @@
+{% if component %}
+<section class="section pb-0">
+    <div class="container py-4">
+        <div class="columns">
+            <div class="column">
+                <h2 class="title {% if component.subtitle %}{% else %}has-text-centered{% endif %}">{{component.title}}</h2>
+            </div>
+            {% if component.subtitle %}
+            <div class="column">
+                <p class="subtitle">{{component.subtitle}}</p>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</section>
+{% endif %}

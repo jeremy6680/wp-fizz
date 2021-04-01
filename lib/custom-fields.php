@@ -19,8 +19,10 @@ use WordPlate\Acf\Fields\Taxonomy;
 use WordPlate\Acf\Location;
 
 
+/*****************************************
+********** PAGE BUILDER WITH ACF  ********
+******************************************/ 
 
-// Flexible Content to create Page Builder
 register_extended_field_group([
 	'title' => 'Page Builder',
 	'fields' => [
@@ -28,29 +30,67 @@ register_extended_field_group([
 		->instructions('Create your own layout from the available components')
 		->buttonLabel('Add a page component')
 		->layouts([
-			/*
-			****** HERO ******
-			*/ 
-			Group::make('Hero')
-			->instructions('Add a hero block with title, content and image to the page.')
+
+			/****************************
+			**** COMPONENT: CARDS *******
+			*****************************/ 
+			Layout::make('Cards')
+			->fields([
+				Repeater::make('Cards')
+				->instructions('Add a card.')
+				->fields([
+				  Image::make('Image'),
+				  Taxonomy::make('Category')
+					  ->instructions('Select one term.')
+					  ->appearance('select') // checkbox, multi_select, radio or select
+					  ->returnFormat('object'), // object or id (default)
+				  Relationship::make('Posts')
+				  ->instructions('Add posts')
+				  ->postTypes(['docs'])
+				  ->filters([
+					  'search', 
+					  'taxonomy'
+				  ])
+				  ->elements(['featured_image'])
+				  ->min(3)
+				  ->max(3)
+				  ->returnFormat('object') // id or object (default)
+				  ->required()
+				])
+				->min(1)
+				->collapsed('card')
+				->buttonLabel('Add a card')
+				->layout('row')
+			])
+			->layout('block'),
+
+			/****************************
+			**** COMPONENT: HERO ********
+			*****************************/ 
+			Layout::make('Hero')
 			->fields([
 				Text::make('Title'),
-				Textarea::make('Subtitle')
+				Textarea::make('Outline')
 				->rows(3),
-				Text::make('CTA name', 'cta_name'),
-				Link::make('CTA URL', 'cta_url'),
-				Text::make('Other link name', 'other_link_name'),
-				Link::make('Other link URL', 'other_link_URL'),
 				Image::make('Background Image', 'background_image')
-				->returnFormat('object')
+				->returnFormat('object'),
+				Group::make('Buttons')
+				->instructions('Add a hero block with title, content and image to the page.')
+				->fields([
+					Text::make('CTA name', 'cta_name'),
+					Link::make('CTA URL', 'cta_url'),
+					Text::make('Other link name', 'other_link_name'),
+					Link::make('Other link URL', 'other_link_URL'),
+				])
+				->layout('table')
+				->required()
 			])
-			->layout('block')
-			->required(),
-			/*
-			****** FEATURES ******
-			*/ 
-			Group::make('Features')
-			->instructions('Add features')
+			->layout('block'),
+
+			/****************************
+			**** COMPONENT: FEATURES ****
+			*****************************/ 
+			Layout::make('Features')
 			->fields([
 				Text::make('Title'),
 				Repeater::make('Features')
@@ -67,8 +107,19 @@ register_extended_field_group([
 				->buttonLabel('Add a feature')
 				->layout('table')
 			])
-			->layout('block')
-			->required(),
+			->layout('block'),
+
+			/****************************
+			**** COMPONENT: TITLE *******
+			*****************************/ 
+			Layout::make('Title')
+			->fields([
+				Text::make('Title'),
+				Textarea::make('Subtitle')
+				->rows(3),
+			])
+			->layout('block'),
+
 		])
 		->required(),
 	],
@@ -113,7 +164,7 @@ register_extended_field_group([
         Text::make('Subtitle'),
     ],
     'location' => [
-        Location::if('post_type', 'page')
+        Location::if('post_type', 'page')->and('page_template', 'default')
     ],
 ]);
 

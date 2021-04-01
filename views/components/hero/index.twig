@@ -5,10 +5,11 @@
             <div class="columns is-vcentered">
                 <div class="column is-6">
                     <h1 class="title is-spaced">{{component.title}}</h1>
-                    <p class="subtitle">{{component.subtitle}}</p>
+                    <p class="subtitle">{{component.outline}}</p>
                     <div class="buttons">
-                        <a class="button is-primary" href="{{component.cta_url}}">{{component.cta_name}}</a>
-                        <a class="button is-text" href="{{component.other_link_url}}">{{component.other_link_name}}</a>
+                        {% set button = component.buttons %}
+                        <a class="button is-primary" href="{{button.cta_url}}">{{button.cta_name}}</a>
+                        <a class="button is-text" href="{{button.other_link_url}}">{{button.other_link_name}}</a>
                     </div>
                 </div>
                 <div class="column is-6">

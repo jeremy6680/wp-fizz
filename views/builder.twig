@@ -2,29 +2,9 @@
 
 {% block content %}
 
-<article class="post-type-{{post.post_type}}" id="post-{{post.ID}}">
-  <section class="section pb-0">
-      <div class="container py-4">
-        <div class="columns">
-          <div class="column">
-            <h2 class="title {% if post.subtitle %}{% else %}has-text-centered{% endif %}">{{post.title}}</h2>
-          </div>
-		  {% if post.subtitle %}
-          <div class="column">
-            <p class="subtitle">{{post.subtitle}}</p>
-          </div>
-		  {% endif %}
-        </div>
-      </div>
-  </section>
-  <main class="page-content">
-    {{post.content}}
-  </main>
-</article>
-
-{% set components = post.get_field("page-components") %}
-{% for component in components %}
-  {% include "components/" ~ component.acf_fc_layout ~ "/index.twig" %}{
-{% endfor %}
+  {% set components = post.get_field("page-components") %}
+  {% for component in components %}
+    {% include "components/" ~ component.acf_fc_layout ~ "/index.twig" %}{
+  {% endfor %}
 
 {% endblock %}
