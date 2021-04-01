@@ -36,31 +36,7 @@ register_extended_field_group([
 			*****************************/ 
 			Layout::make('Cards')
 			->fields([
-				Repeater::make('Cards')
-				->instructions('Add a card.')
-				->fields([
-				  Image::make('Image'),
-				  Taxonomy::make('Category')
-					  ->instructions('Select one term.')
-					  ->appearance('select') // checkbox, multi_select, radio or select
-					  ->returnFormat('object'), // object or id (default)
-				  Relationship::make('Posts')
-				  ->instructions('Add posts')
-				  ->postTypes(['docs'])
-				  ->filters([
-					  'search', 
-					  'taxonomy'
-				  ])
-				  ->elements(['featured_image'])
-				  ->min(3)
-				  ->max(3)
-				  ->returnFormat('object') // id or object (default)
-				  ->required()
-				])
-				->min(1)
-				->collapsed('card')
-				->buttonLabel('Add a card')
-				->layout('row')
+				require __DIR__.'/fields/cards.php'
 			])
 			->layout('block'),
 
@@ -69,21 +45,7 @@ register_extended_field_group([
 			*****************************/ 
 			Layout::make('Hero')
 			->fields([
-				Text::make('Title'),
-				Textarea::make('Outline')
-				->rows(3),
-				Image::make('Background Image', 'background_image')
-				->returnFormat('object'),
-				Group::make('Buttons')
-				->instructions('Add a hero block with title, content and image to the page.')
-				->fields([
-					Text::make('CTA name', 'cta_name'),
-					Link::make('CTA URL', 'cta_url'),
-					Text::make('Other link name', 'other_link_name'),
-					Link::make('Other link URL', 'other_link_URL'),
-				])
-				->layout('table')
-				->required()
+				require __DIR__.'/fields/hero.php'
 			])
 			->layout('block'),
 
@@ -92,20 +54,7 @@ register_extended_field_group([
 			*****************************/ 
 			Layout::make('Features')
 			->fields([
-				Text::make('Title'),
-				Repeater::make('Features')
-				->instructions('Each feature includes an image, a name and a short description.')
-				->fields([
-				  Text::make('Name'),
-				  Textarea::make('Description'),
-				  Image::make('Image')
-				  ->returnFormat('object')
-				])
-				->min(3)
-				->max(6)
-				->collapsed('features')
-				->buttonLabel('Add a feature')
-				->layout('table')
+				require __DIR__.'/fields/features.php'
 			])
 			->layout('block'),
 
@@ -114,9 +63,7 @@ register_extended_field_group([
 			*****************************/ 
 			Layout::make('Title')
 			->fields([
-				Text::make('Title'),
-				Textarea::make('Subtitle')
-				->rows(3),
+				require __DIR__.'/fields/title.php'
 			])
 			->layout('block'),
 
@@ -159,13 +106,13 @@ register_extended_field_group([
 
 // Custom Fields to add extra info to Pages
 register_extended_field_group([
-	'title' => 'Page info',
+	'title' => 'HERO',
     'fields' => [
-        Text::make('Subtitle'),
-    ],
-    'location' => [
-        Location::if('post_type', 'page')->and('page_template', 'default')
-    ],
+        require __DIR__.'/fields/hero.php'
+	],
+	'location' => [
+		Location::if('page_type', '==', 'front_page'),
+	],
 ]);
 
 // Custom Fields for Single Doc Post
@@ -222,3 +169,7 @@ register_extended_field_group([
 		  Location::if('block', 'acf/cards-block'),
 	  ],
   ]);
+
+
+  
+  

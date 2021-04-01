@@ -1,8 +1,7 @@
 {% if component %}
-  <section class="{{ classes }} section" is="wpf-block-cards" data-{{ block.id }}>
+  <section class="{{ classes }} section cards" is="wpf-components-cards" data-{{ block.id }}>
     <div class="container py-4">
       <div class="columns is-multiline">
-       {{ component.cards|print_r }}
           {% set cards = component.cards %}
           {% for card in cards %}
           <div class="column is-12 is-4-widescreen">

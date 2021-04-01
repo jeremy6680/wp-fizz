@@ -1,7 +1,7 @@
 {% extends "tease/index.twig" %}
 
 {% block content %}
-<div class="column is-6-tablet is-3-widescreen tease tease-{{post.post_type}}" id="tease-{{post.ID}}" is="wpf-block-tease" data-{{ block.id }}>
+<div class="column is-6-tablet is-3-widescreen tease tease-{{post.post_type}}" id="tease-{{post.ID}}" is="wpf-component-tease" data-{{ block.id }}>
 	<div class="card" style="height: 100%">
 		<div class="card-image">
 			<a href="{{post.link}}">

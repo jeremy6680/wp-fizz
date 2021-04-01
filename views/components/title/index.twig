@@ -1,13 +1,14 @@
 {% if component %}
-<section class="section pb-0">
+<section class="section pb-0" is="wpf-component-title">
     <div class="container py-4">
+        {% set heading = component.heading %}
         <div class="columns">
             <div class="column">
-                <h2 class="title {% if component.subtitle %}{% else %}has-text-centered{% endif %}">{{component.title}}</h2>
+                <h2 class="title {% if heading.outline %}{% else %}has-text-centered{% endif %}">{{heading.title}}</h2>
             </div>
-            {% if component.subtitle %}
+            {% if heading.outline %}
             <div class="column">
-                <p class="subtitle">{{component.subtitle}}</p>
+                <p class="subtitle">{{heading.outline}}</p>
             </div>
             {% endif %}
         </div>

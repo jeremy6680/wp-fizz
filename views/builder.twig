@@ -4,7 +4,7 @@
 
   {% set components = post.get_field("page-components") %}
   {% for component in components %}
-    {% include "components/" ~ component.acf_fc_layout ~ "/index.twig" %}{
+    {% include "components/" ~ component.acf_fc_layout ~ "/index.twig" %}
   {% endfor %}
 
 {% endblock %}
