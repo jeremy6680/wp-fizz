@@ -1,0 +1,21 @@
+{% if component %}
+<section class="hero" is="wpf-block-pagination">
+    <div class="hero-body">
+        <div class="container">
+            <div class="columns is-vcentered">
+                <div class="column is-6">
+                    <h1 class="title is-spaced">{{component.title}}</h1>
+                    <p class="subtitle">{{component.subtitle}}</p>
+                    <div class="buttons">
+                        <a class="button is-primary" href="{{component.cta_url}}">{{component.cta_name}}</a>
+                        <a class="button is-text" href="{{component.other_link_url}}">{{component.other_link_name}}</a>
+                    </div>
+                </div>
+                <div class="column is-6">
+                    <img src="{{component.background_image.url}}" alt="">
+                </div>            
+            </div>
+        </div>
+    </div>
+</section>
+{% endif %}

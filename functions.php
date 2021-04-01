@@ -253,7 +253,7 @@ new StarterSite();
 		// Get the name of the Page Template file.
 		$template_file = get_post_meta($post_id, '_wp_page_template', true);
 
-		if($template_file == 'no-editor-page.php'){ // the filename of the page template
+		if($template_file == 'builder.php'){ // the filename of the page template
 			remove_post_type_support('page', 'editor');
 		}
 	}

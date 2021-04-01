@@ -1,6 +1,7 @@
 {% extends "base.twig" %}
 
 {% block content %}
+
 <article class="post-type-{{post.post_type}}" id="post-{{post.ID}}">
   <section class="section pb-0">
       <div class="container py-4">
@@ -20,4 +21,10 @@
     {{post.content}}
   </main>
 </article>
+
+{% set components = post.get_field("page-components") %}
+{% for component in components %}
+  {% include "components/" ~ component.acf_fc_layout ~ "/index.twig" %}{
+{% endfor %}
+
 {% endblock %}

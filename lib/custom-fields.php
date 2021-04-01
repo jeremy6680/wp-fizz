@@ -18,6 +18,68 @@ use WordPlate\Acf\Fields\Relationship;
 use WordPlate\Acf\Fields\Taxonomy;
 use WordPlate\Acf\Location;
 
+
+
+// Flexible Content to create Page Builder
+register_extended_field_group([
+	'title' => 'Page Builder',
+	'fields' => [
+	FlexibleContent::make('Components', 'page-components')
+		->instructions('Create your own layout from the available components')
+		->buttonLabel('Add a page component')
+		->layouts([
+			/*
+			****** HERO ******
+			*/ 
+			Group::make('Hero')
+			->instructions('Add a hero block with title, content and image to the page.')
+			->fields([
+				Text::make('Title'),
+				Textarea::make('Subtitle')
+				->rows(3),
+				Text::make('CTA name', 'cta_name'),
+				Link::make('CTA URL', 'cta_url'),
+				Text::make('Other link name', 'other_link_name'),
+				Link::make('Other link URL', 'other_link_URL'),
+				Image::make('Background Image', 'background_image')
+				->returnFormat('object')
+			])
+			->layout('block')
+			->required(),
+			/*
+			****** FEATURES ******
+			*/ 
+			Group::make('Features')
+			->instructions('Add features')
+			->fields([
+				Text::make('Title'),
+				Repeater::make('Features')
+				->instructions('Each feature includes an image, a name and a short description.')
+				->fields([
+				  Text::make('Name'),
+				  Textarea::make('Description'),
+				  Image::make('Image')
+				  ->returnFormat('object')
+				])
+				->min(3)
+				->max(6)
+				->collapsed('features')
+				->buttonLabel('Add a feature')
+				->layout('table')
+			])
+			->layout('block')
+			->required(),
+		])
+		->required(),
+	],
+	'location' => [
+        Location::if('page_template', '==', 'builder.php'),
+    ]
+]);
+
+
+
+
 // Custom Fields for the Home Page
 register_extended_field_group([
 	'title' => 'Home Page',
