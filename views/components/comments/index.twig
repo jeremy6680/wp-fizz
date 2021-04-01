@@ -2,18 +2,18 @@
         <div class="container py-4">
           <div class="columns is-centered">
             <div class="column is-8">
-			{% if post.comments %}
-			  <h3 class="title is-4">{{ __('Replies', 'wpf-theme') }}</h3>
-			  {% for comment in post.comments %}
-              <div class="media">
-                <div class="media-left"><figure class="image is-64x64"><img class="is-rounded" src="{{comment.avatar(36)}}" alt="Image of {{comment.author.name}}" /></figure></div>
-                <div class="media-content">
-                  <p><strong>{{ comment.author.name }}</strong> | <span>{{comment.comment_date|date('F j, Y')}}</span></p>
-                  <p>{{ comment.content }}</p>
-                </div>
-              </div>
-			  {% endfor %}
-			{% endif %}
+            {% if post.comments %}
+              <h3 class="title is-4">{{ __('Replies', 'wpf-theme') }}</h3>
+              {% for comment in post.comments %}
+                    <div class="media">
+                      <div class="media-left"><figure class="image is-64x64"><img class="is-rounded" src="{{comment.avatar(36)}}" alt="Image of {{comment.author.name}}" /></figure></div>
+                      <div class="media-content">
+                        <p><strong>{{ comment.author.name }}</strong> | <span>{{comment.comment_date|date('F j, Y')}}</span></p>
+                        <p>{{ comment.content }}</p>
+                      </div>
+                    </div>
+              {% endfor %}
+            {% endif %}
             </div>
           </div>
         </div>

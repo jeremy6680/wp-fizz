@@ -6,13 +6,41 @@
 // cf https://github.com/wordplate/extended-acf
 
 use WordPlate\Acf\Fields\Repeater;
-use WordPlate\Acf\Fields\Url;
+use WordPlate\Acf\Fields\Group;
 use WordPlate\Acf\Fields\Text;
+use WordPlate\Acf\Fields\Url;
+use WordPlate\Acf\Fields\Link;
 use WordPlate\Acf\Fields\Textarea;
 use WordPlate\Acf\Fields\Image;
 use WordPlate\Acf\Fields\Relationship;
 use WordPlate\Acf\Fields\Taxonomy;
 use WordPlate\Acf\Location;
+
+// Custom Fields for the Home Page
+register_extended_field_group([
+	'title' => 'Home Page',
+	'fields' => [
+	Group::make('Hero')
+    ->instructions('Add a hero block with title, content and image to the page.')
+    ->fields([
+        Text::make('Title'),
+		Text::make('Subtitle'),
+        Text::make('CTA name'),
+		Link::make('CTA URL'),
+		Text::make('Other link name'),
+		Link::make('Other link URL'),
+        Image::make('Background Image'),
+    ])
+    ->layout('block')
+    ->required(),
+	],
+    'location' => [
+        Location::if('page_type', '==', 'front_page'),
+    ],
+	'hide_on_screen' => array(
+		0 => 'the_content')
+]);
+
 
 // Custom Fields to add extra info to Pages
 register_extended_field_group([
