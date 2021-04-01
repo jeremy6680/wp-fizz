@@ -1,19 +1,23 @@
 {% extends "base.twig" %}
 
 {% block content %}
+      {% set hero = post.meta('hero') %}
+      {% if hero %}
        <section class="hero"><div class="hero-body">
           <div class="container">
             <div class="columns is-vcentered">
               <div class="column is-6">
-                <h1 class="title is-spaced">Have fun creating your WP theme!</h1>
-                <p class="subtitle">WP Fizz is a component-based starter theme for WordPress using cool &amp; modern technologies such as Timber, ACF and Bulma. It also includes support for Gutenberg.</p>
-                <div class="buttons"><a class="button is-primary" href="#">Download the theme</a><a class="button is-text" href="#">Project on Github</a></div>
+                <h1 class="title is-spaced">{{hero.title}}</h1>
+                <p class="subtitle">{{hero.subtitle}}</p>
+                <div class="buttons"><a class="button is-primary" href="{{hero.cta_url}}">{{hero.cta_name}}</a><a class="button is-text" href="{{hero.other_link_url}}">{{hero.other_link_name}}</a></div>
               </div>
-              <div class="column is-6"><img src="{{site.theme.link}}/assets/src/img/base.png" alt=""></div>
+              <div class="column is-6"><img src="{{hero.background_image.url}}" alt=""></div>
+              
             </div>
           </div>
         </div>
       </section>
+      {% endif %}
     
       <section class="section">
         <div class="container has-text-centered py-4">
