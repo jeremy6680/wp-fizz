@@ -27,7 +27,5 @@ return Group::make('Hero')
                 Link::make('Other link URL', 'other_link_URL'),
             ])
             ->layout('table')
-            ->required()
         ])
-        ->layout('row')
-        ->required();
+        ->layout('row');
