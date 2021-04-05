@@ -1,0 +1,32 @@
+{% if component %}
+<section class="section how-it-works" is="wpf-component-how-it-works">
+    <div class="container py-4">
+        {% set how_it_works_block = component.how_it_works %}
+      <div class="columns is-vcentered">
+        <div class="column is-6">
+          <h2 class="title">{{how_it_works_block.title}}</h2>
+          <h3 class="title is-5">{{how_it_works_block.subtitle}}</h3>
+          <p class="subtitle is-6">{{how_it_works_block.introduction}}</p>
+          {% set button = how_it_works_block.buttons %}
+          <div class="buttons"><a class="button is-primary" href="{{button.cta_url}}">{{button.cta_name}}</a><a class="button is-text" href="{{button.other_link_url}}">{{button.other_link_name}}</a></div>
+        </div>
+        {% set steps = how_it_works_block.steps %}
+        <div class="column is-6">
+          {% for step in steps %}
+          <div class="media">
+            <div class="media-left">
+              <div class="number has-background-primary">{{loop.index}}</div>
+            </div>
+            <div class="media-content">
+              <div class="content">
+                <h3>{{step.name}}</h3>
+                <p>{{step.description}}</p>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+</section>
+{% endif %}

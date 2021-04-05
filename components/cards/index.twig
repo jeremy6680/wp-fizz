@@ -1,0 +1,33 @@
+{% if component %}
+  <section class="{{ classes }} section cards" is="wpf-component-cards" data-{{ block.id }}>
+    <div class="container py-4">
+      <div class="columns is-multiline">
+          {% set cards = component.cards %}
+          {% for card in cards %}
+          <div class="column is-12 is-4-widescreen">
+            <div class="card">
+              <div class="card-header">
+                <div class="card-header-title">
+                  <h5 class="subtitle is-5">{{card.category}}</h5>
+                </div>
+                <div class="card-header-icon"><a href="{{Term(card.category).link }}">{{ __('Sell all', 'wpf-theme') }}</a></div>
+              </div>
+              <div class="card-image">
+                <a href="{{Term(card.category).link }}"><img src="{{ Image(card.image).src|resize(432,324)}}" alt=""></a>
+              </div>
+              <div class="card-content">
+                <div class="menu">
+                  <ul class="menu-list">
+                  {% for item in Post(card.posts) %}
+                  <li><a href="{{item.link}}"><span>{{item.title}}</span><span class="is-pulled-right">&rsaquo;</span></a></li>
+                  {% endfor %}
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+      </div>
+    </div>
+  </section>
+{% endif %}

@@ -1,0 +1,23 @@
+{% if component %}
+<section class="hero" is="wpf-component-hero">
+    <div class="hero-body">
+        <div class="container">
+            <div class="columns is-vcentered">
+                <div class="column is-6">
+                    {% set hero = component.hero %}
+                    <h1 class="title is-spaced">{{hero.title}}</h1>
+                    <p class="subtitle">{{hero.outline}}</p>
+                    <div class="buttons">
+                        {% set button = hero.buttons %}
+                        <a class="button is-primary" href="{{button.cta_url}}">{{button.cta_name}}</a>
+                        <a class="button is-text" href="{{button.other_link_url}}">{{button.other_link_name}}</a>
+                    </div>
+                </div>
+                <div class="column is-6">
+                    <img src="{{hero.background_image.url}}" alt="">
+                </div>            
+            </div>
+        </div>
+    </div>
+</section>
+{% endif %}

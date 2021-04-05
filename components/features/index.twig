@@ -1,0 +1,22 @@
+{% if component %}
+<section class="section features" is="wpf-component-features">
+    {% set features_block = component.features %}
+    <div class="container has-text-centered py-4">
+        <h2 class="title is-spaced mb-6">{{features_block.title}}</h2>
+        <div class="columns mb-6">
+            {% set features = features_block.features %}
+            {% for feature in features %}
+            <div class="column">
+                <div class="level">
+                <div class="level-item">
+                    <figure class="image is-128x128"><img class="is-rounded" src="{{feature.image.url}}" alt=""></figure>
+                </div>
+                </div>
+                <h4 class="title is-4">{{feature.name}}</h4>
+                <p>{{feature.description}}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}
