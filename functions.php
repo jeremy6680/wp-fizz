@@ -50,7 +50,7 @@ if ( ! class_exists( 'Timber' ) ) {
 /**
  * Sets the directories (inside your theme) to find .twig files
  */
-Timber::$dirname = array( 'templates/', 'views/', 'views/components/' );
+Timber::$dirname = array( 'templates/', 'views/', 'views/layouts/' );
 
 /**
  * By default, Timber does NOT autoescape values. Want to enable Twig's autoescape?
@@ -231,29 +231,3 @@ new StarterSite();
 	}
 	add_action( 'wp_enqueue_scripts', 'wpf_scripts' );
 
-	/**
-	 * Hide editor on front page and pages which have the "No Editor" Template.
-	 *
-	 */
-	add_action( 'admin_init', 'hide_editor' );
-
-	function hide_editor() {
-		// Get the Post ID.
-		$id = !empty($_POST['post_id']) ? $_POST['post_id'] : '';
-		$post_id = !empty($_GET['post']) ? $_GET['post'] : $id ;
-		if( !isset( $post_id ) ) return;
-
-		// Hide the editor on the page titled 'Homepage'
-		$homepgname = get_the_title($post_id);
-		if($homepgname == 'Home Page'){ 
-			remove_post_type_support('page', 'editor');
-		}
-
-		// Hide the editor on a page with a specific page template
-		// Get the name of the Page Template file.
-		$template_file = get_post_meta($post_id, '_wp_page_template', true);
-
-		if($template_file == 'builder.php'){ // the filename of the page template
-			remove_post_type_support('page', 'editor');
-		}
-	}

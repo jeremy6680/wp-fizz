@@ -18,62 +18,6 @@ use WordPlate\Acf\Fields\Relationship;
 use WordPlate\Acf\Fields\Taxonomy;
 use WordPlate\Acf\Location;
 
-
-/*****************************************
-********** PAGE BUILDER WITH ACF  ********
-******************************************/ 
-
-register_extended_field_group([
-	'title' => 'Page Builder',
-	'fields' => [
-	FlexibleContent::make('Components', 'page-components')
-		->instructions('Create your own layout from the available components')
-		->buttonLabel('Add a page component')
-		->layouts([
-
-			/****************************
-			**** COMPONENT: CARDS *******
-			*****************************/ 
-			Layout::make('Cards')
-			->fields([
-				require __DIR__.'/fields-components/cards.php'
-			])
-			->layout('block'),
-
-			/****************************
-			**** COMPONENT: HERO ********
-			*****************************/ 
-			Layout::make('Hero')
-			->fields([
-				require __DIR__.'/fields-components/hero.php'
-			])
-			->layout('block'),
-
-			/****************************
-			**** COMPONENT: FEATURES ****
-			*****************************/ 
-			Layout::make('Features')
-			->fields([
-				require __DIR__.'/fields-components/features.php'
-			])
-			->layout('block'),
-
-			/****************************
-			**** COMPONENT: TITLE *******
-			*****************************/ 
-			Layout::make('Title')
-			->fields([
-				require __DIR__.'/fields-components/title.php'
-			])
-			->layout('block'),
-
-		])
-	],
-	'location' => [
-        Location::if('page_template', '==', 'builder.php'),
-    ]
-]);
-
 // Custom Fields for Single Doc Post
 register_extended_field_group([
 	'title' => 'Extra info',
@@ -91,23 +35,4 @@ register_extended_field_group([
 	  'location' => [
 		  Location::if('post_type', 'docs'),
 	  ],
-  ]);
-
-// Custom Fields for Cards
-register_extended_field_group([
-	'title' => 'Cards',
-	'fields' => [
-		Group::make('Cards')
-		->fields([
-			require __DIR__.'/fields-components/cards.php'
-		])
-		->layout('row'),
-	],
-	'location' => [
-		Location::if('block', 'acf/cards-block'),
-	],
-  ]);
-
-
-  
-  
+  ]);  
