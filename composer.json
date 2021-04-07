@@ -5,13 +5,31 @@
         "timber/timber": "*",
         "advanced-custom-fields/advanced-custom-fields-pro": "^5.9",
         "johnbillion/extended-cpts": "^4.5",
-        "wordplate/acf": "^9.1"
+        "wordplate/acf": "^9.1",
+        "jeremy6680/wp-fizz-builder": "*"
     },
     "license": "MIT",
     "repositories": [
         {
           "type": "composer",
           "url": "https://pivvenit.github.io/acf-composer-bridge/composer/v3/library/" 
+        },
+        {
+          "type": "package",
+          "package": {
+            "name": "jeremy6680/wp-fizz-builder",
+            "version": "1.2.3",
+            "source": {
+              "type" : "vcs",
+              "url" : "https://github.com/jeremy6680/wp-fizz-builder.git",
+              "reference" : "main"
+            },
+            "minimum-stability": "dev",
+            "dist": {
+              "url": "https://github.com/jeremy6680/wp-fizz-builder/archive/refs/heads/main.zip",
+              "type": "zip"
+            }
+          }
         }
       ]
 }
