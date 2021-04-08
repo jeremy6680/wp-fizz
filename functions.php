@@ -113,9 +113,15 @@ class StarterSite extends Timber\Site {
 		*  Load WP Fizz Builder
 		*/
 
-		   include_once( get_stylesheet_directory() . '/vendor/jeremy6680/wp-fizz-builder/index.php' );
+		$filename = get_stylesheet_directory() . '/vendor/jeremy6680/wp-fizz-builder/wpfizzbuilder.php';
 
-	}
+			if (file_exists($filename)) {
+			    include_once( get_stylesheet_directory() . '/vendor/jeremy6680/wp-fizz-builder/wpfizzbuilder.php' );
+			} else {
+			    return;
+			}	   
+
+		}
 
 	/** This is where you can register custom post types. */
 	public function register_post_types() {
@@ -235,6 +241,7 @@ new StarterSite();
 
 		// Enqueue stylesheet and scripts. Use minified for production.
 			wp_enqueue_style( 'wpf-styles', get_stylesheet_directory_uri() . '/assets/dist/app.css', 1.0);
+			wp_enqueue_style( 'wpf-components', get_stylesheet_directory_uri() . '/assets/dist/layouts.css', 1.0);
 			wp_enqueue_style( 'wpf-components', get_stylesheet_directory_uri() . '/assets/dist/components.css', 1.0);
 			wp_enqueue_script( 'wpf-js', get_stylesheet_directory_uri() . '/assets/dist/app.js', array('jquery'), '1.0.0', true );
 
