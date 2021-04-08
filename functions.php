@@ -113,14 +113,7 @@ class StarterSite extends Timber\Site {
 		*  Load WP Fizz Builder
 		*/
 
-		   // Define path and URL to the WPFB plugin.
-		   define( 'WPFB_PATH', get_stylesheet_directory() . '/vendor/jeremy6680/wp-fizz-builder/' );
-		   define( 'WPFB_URL', get_stylesheet_directory_uri() . '/vendor/jeremy6680/wp-fizz-builder/' );
-
-		   // Include the WPFB plugin.
-		   include_once( WPFB_PATH . 'index.php' );
-		   $wpfb    = new WPFB();
-		   $wpfb->init();
+		   include_once( get_stylesheet_directory() . '/vendor/jeremy6680/wp-fizz-builder/index.php' );
 
 	}
 

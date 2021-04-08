@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e093bb2369067c6224fefcc4fcb0057e",
+    "content-hash": "9ba5794a9d4ed4f2ba1f6ce71bfbafd4",
     "packages": [
         {
             "name": "advanced-custom-fields/advanced-custom-fields-pro",
@@ -375,7 +375,7 @@
         },
         {
             "name": "jeremy6680/wp-fizz-builder",
-            "version": "1.2.3",
+            "version": "v1.0.2-BETA",
             "source": {
                 "type": "vcs",
                 "url": "https://github.com/jeremy6680/wp-fizz-builder.git",
@@ -383,7 +383,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/jeremy6680/wp-fizz-builder/archive/refs/heads/main.zip"
+                "url": "https://github.com/jeremy6680/wp-fizz-builder/archive/refs/tags/v1.0.2-BETA.zip"
             },
             "type": "library"
         },
@@ -1188,7 +1188,9 @@
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "jeremy6680/wp-fizz-builder": 10
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],

@@ -6,7 +6,7 @@
         "advanced-custom-fields/advanced-custom-fields-pro": "^5.9",
         "johnbillion/extended-cpts": "^4.5",
         "wordplate/acf": "^9.1",
-        "jeremy6680/wp-fizz-builder": "*"
+        "jeremy6680/wp-fizz-builder": "v1.0.2-BETA"
     },
     "license": "MIT",
     "repositories": [
@@ -18,7 +18,7 @@
           "type": "package",
           "package": {
             "name": "jeremy6680/wp-fizz-builder",
-            "version": "1.2.3",
+            "version": "v1.0.2-BETA",
             "source": {
               "type" : "vcs",
               "url" : "https://github.com/jeremy6680/wp-fizz-builder.git",
@@ -26,7 +26,7 @@
             },
             "minimum-stability": "dev",
             "dist": {
-              "url": "https://github.com/jeremy6680/wp-fizz-builder/archive/refs/heads/main.zip",
+              "url": "https://github.com/jeremy6680/wp-fizz-builder/archive/refs/tags/v1.0.2-BETA.zip",
               "type": "zip"
             }
           }
