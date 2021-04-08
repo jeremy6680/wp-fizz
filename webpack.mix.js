@@ -13,11 +13,22 @@
         proxy: "http://wpfizz.test"
     });
 
-    const folders = fs.readdirSync(path.resolve(__dirname, 'views', 'components' ), 'utf-8')  
+    const folders = fs.readdirSync(path.resolve(__dirname, 'views', 'layouts' ), 'utf-8')  
     
     for (let folder of folders) {
         if(folder != '.DS_Store') {
-            mix.sass(`views/components/${folder}/style.scss`, 'assets/dist/components.css');
+            mix.sass(`views/layouts/${folder}/style.scss`, 'assets/dist/layouts.css');
           }
        
     }
+
+    const componentfolders = fs.readdirSync(path.resolve(__dirname, 'components' ), 'utf-8')  
+    
+    for (let componentfolder of componentfolders) {
+        if(componentfolder != '.DS_Store' && componentfolder != 'index.php') {
+            mix.sass(`components/${componentfolder}/style.scss`, 'assets/dist/components.css');
+          }
+       
+    }
+
+
