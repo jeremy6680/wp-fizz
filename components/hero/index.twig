@@ -9,8 +9,8 @@
                     <p class="subtitle">{{hero.outline}}</p>
                     <div class="buttons">
                         {% set button = hero.buttons %}
-                        <a class="button is-primary" href="{{button.cta_url}}">{{button.cta_name}}</a>
-                        <a class="button is-text" href="{{button.other_link_url}}">{{button.other_link_name}}</a>
+                        <a class="button is-primary" href="{{button.cta.url}}">{{button.cta.title}}</a>
+                        <a class="button is-text" href="{{button.other_link.url}}">{{button.other_link.title}}</a>
                     </div>
                 </div>
                 <div class="column is-6">

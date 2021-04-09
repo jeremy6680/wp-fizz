@@ -21,10 +21,8 @@ return Group::make('Hero')
             Group::make('Buttons')
             ->instructions('Add a hero block with title, content and image to the page.')
             ->fields([
-                Text::make('CTA name', 'cta_name'),
-                Link::make('CTA URL', 'cta_url'),
-                Text::make('Other link name', 'other_link_name'),
-                Link::make('Other link URL', 'other_link_URL'),
+                Link::make('CTA', 'cta'),
+                Link::make('Other link', 'other_link'),
             ])
             ->layout('table')
         ])
