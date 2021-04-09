@@ -6,7 +6,8 @@
         "advanced-custom-fields/advanced-custom-fields-pro": "^5.9",
         "johnbillion/extended-cpts": "^4.5",
         "wordplate/acf": "^9.1",
-        "jeremy6680/wp-fizz-builder": "v1.0.2-BETA"
+        "jeremy6680/wp-fizz-builder": "v1.0.2-BETA",
+        "palmiak/timber-acf-wp-blocks": "^1.14"
     },
     "license": "MIT",
     "repositories": [
