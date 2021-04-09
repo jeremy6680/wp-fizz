@@ -1,10 +1,11 @@
 <?php
+// Inspired by https://medium.com/nicooprat/acf-blocks-avec-gutenberg-et-sage-d8c20dab6270
 
 function my_acf_block_render_callback( $block ) {
   $slug = str_replace('acf/', '', $block['name']);
   $block['slug'] = $slug;
   $block['classes'] = implode(' ', [$block['slug'], $block['className'], $block['align']]);
-  echo \App\template("blocks/${slug}", ['block' => $block]);
+  echo \App\template("blocks/${slug}/${slug}", ['block' => $block]);
 }
 
 add_action('acf/init', function() {
@@ -16,7 +17,7 @@ add_action('acf/init', function() {
       if (!$fileinfo->isDot()) {
         $slug = str_replace('.twig', '', $fileinfo->getFilename());
         // Get infos from file
-        $file_path = locate_template("views/blocks/${slug}.twig");
+        $file_path = locate_template("views/blocks/${slug}/${slug}.twig");
         $file_headers = get_file_data($file_path, [
           'title' => 'Title',
           'description' => 'Description',
@@ -45,3 +46,5 @@ add_action('acf/init', function() {
     }
   }
 });
+
+include(locate_template('views/blocks/testimonial/fields.php'));
