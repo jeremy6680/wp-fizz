@@ -46,5 +46,3 @@ add_action('acf/init', function() {
     }
   }
 });
-
-include(locate_template('views/blocks/testimonial/fields.php'));

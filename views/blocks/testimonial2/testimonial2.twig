@@ -1,0 +1,26 @@
+{#
+  Title: Testimonial2
+  Description: Customer testimonial2
+  Category: formatting
+  Icon: admin-comments
+  Keywords: testimonial quote "customer testimonial2"
+  Mode: edit
+  Align: left
+  PostTypes: page post
+  SupportsAlign: left right
+  SupportsMode: false
+  SupportsMultiple: false
+#}
+
+<blockquote class="{{ classes }}" data-{{ block.id }}>
+    <p>{{ fields.phrase }}</p>
+    <cite>
+      <span>{{ fields.nom }}</span>
+    </cite>
+</blockquote>
+
+<style type="text/css">
+  [data-{{ block.id }}] {
+
+  }
+</style>
