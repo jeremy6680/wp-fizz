@@ -13,11 +13,11 @@
         proxy: "http://wpfizz.test"
     });
 
-    const folders = fs.readdirSync(path.resolve(__dirname, 'views', 'layouts' ), 'utf-8')  
+    const folders = fs.readdirSync(path.resolve(__dirname, 'templates', 'layouts' ), 'utf-8')  
     
     for (let folder of folders) {
         if(folder != '.DS_Store') {
-            mix.sass(`views/layouts/${folder}/style.scss`, 'assets/dist/layouts.css');
+            mix.sass(`templates/layouts/${folder}/style.scss`, 'assets/dist/layouts.css');
           }
        
     }
@@ -31,11 +31,11 @@
        
     }
 
-    const blockfolders = fs.readdirSync(path.resolve(__dirname, 'views', 'blocks' ), 'utf-8')  
+    const blockfolders = fs.readdirSync(path.resolve(__dirname, 'templates', 'blocks' ), 'utf-8')  
     
     for (let blockfolder of blockfolders) {
         if(blockfolder != '.DS_Store' && blockfolder != 'index.php') {
-            mix.sass(`views/blocks/${blockfolder}/style.scss`, 'assets/dist/blocks.css');
+            mix.sass(`templates/blocks/${blockfolder}/style.scss`, 'assets/dist/blocks.css');
           }
        
     }

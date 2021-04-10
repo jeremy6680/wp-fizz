@@ -64,7 +64,7 @@ if ( ! class_exists( 'Timber' ) ) {
 /**
  * Sets the directories (inside your theme) to find .twig files
  */
-Timber::$dirname = array( 'templates/', 'views/', 'views/layouts/' );
+Timber::$dirname = array( 'templates/', 'templates/blocks/', 'templates/layouts/', 'templates/pages/', 'templates/document/' );
 
 /**
  * By default, Timber does NOT autoescape values. Want to enable Twig's autoescape?
@@ -240,10 +240,3 @@ new StarterSite();
 
 	}
 	add_action( 'wp_enqueue_scripts', 'wpf_scripts' );
-
-
-
-
-
-//include(locate_template('views/blocks/testimonial/fields.php'));
-//include(locate_template('views/blocks/block-testimonial2/fields.php'));
