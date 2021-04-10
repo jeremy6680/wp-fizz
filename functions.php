@@ -238,5 +238,6 @@ new StarterSite();
 
 
 
-include(locate_template('views/blocks/testimonial/fields.php'));
-include(locate_template('views/blocks/testimonial2/fields.php'));
+	require('lib/block-fields.php');	
+//include(locate_template('views/blocks/testimonial/fields.php'));
+//include(locate_template('views/blocks/block-testimonial2/fields.php'));
