@@ -8,10 +8,7 @@ class StarterSite extends Timber\Site {
 		add_filter( 'timber/twig', array( $this, 'add_to_twig' ) );
 		add_filter( 'timber/acf-gutenberg-blocks-templates', array( $this, 'get_blocks_templates' ) );
 		add_action( 'init', array( $this, 'wpfb_load' ) );
-		add_action( 'init', array( $this, 'register_post_types' ) );
-		add_action( 'init', array( $this, 'register_taxonomies' ) );
 		add_action( 'init', array( $this, 'register_menus' ) );
-		add_action( 'init', array( $this, 'register_custom_fields' ) );
 		add_action('init', array($this, 'wpf_acf_utils') );
 		add_action('acf/init', array($this, 'wpf_block_fields') );
 		add_action('widgets_init', array($this, 'register_sidebars') );
@@ -34,21 +31,8 @@ class StarterSite extends Timber\Site {
 
 		}
 
-	/** This is where you can register custom post types. */
-	public function register_post_types() {
-		require(get_template_directory() . '/inc/custom-post-types.php');
-	}
-	/** This is where you can register custom taxonomies. */
-	public function register_taxonomies() {
-		require(get_template_directory() . '/inc/taxonomies.php');
-	}
-
 	public function register_menus(){
 		require(get_template_directory() . '/inc/menus.php');
-	}
-
-	public function register_custom_fields(){
-		require(get_template_directory() . '/inc/custom-fields.php');
 	}
 
 	public function register_sidebars() {
