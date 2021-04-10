@@ -91,6 +91,7 @@ class StarterSite extends Timber\Site {
 		add_action('init', array($this, 'wpf_acf_utils') );
 		add_action('acf/init', array($this, 'wpf_register_blocks') );
 		add_action('acf/init', array($this, 'wpf_display_blocks') );
+		add_action('acf/init', array($this, 'wpf_block_fields') );
 		add_action('widgets_init', array($this, 'register_sidebars') );
 		parent::__construct();
 	}
@@ -141,6 +142,10 @@ class StarterSite extends Timber\Site {
 
 	public function wpf_display_blocks() {
 		require('lib/blocks-callback.php');
+	}
+
+	public function wpf_block_fields() {
+		require('lib/block-fields.php');
 	}
 
 	public function theme_supports() {
@@ -230,6 +235,7 @@ new StarterSite();
 			wp_enqueue_style( 'wpf-styles', get_stylesheet_directory_uri() . '/assets/dist/app.css', 1.0);
 			wp_enqueue_style( 'wpf-layouts', get_stylesheet_directory_uri() . '/assets/dist/layouts.css', 1.0);
 			wp_enqueue_style( 'wpf-components', get_stylesheet_directory_uri() . '/assets/dist/components.css', 1.0);
+			wp_enqueue_style( 'wpf-blocks', get_stylesheet_directory_uri() . '/assets/dist/blocks.css', 1.0);
 			wp_enqueue_script( 'wpf-js', get_stylesheet_directory_uri() . '/assets/dist/app.js', array('jquery'), '1.0.0', true );
 
 	}
@@ -238,6 +244,6 @@ new StarterSite();
 
 
 
-	require('lib/block-fields.php');	
+
 //include(locate_template('views/blocks/testimonial/fields.php'));
 //include(locate_template('views/blocks/block-testimonial2/fields.php'));

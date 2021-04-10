@@ -31,4 +31,13 @@
        
     }
 
+    const blockfolders = fs.readdirSync(path.resolve(__dirname, 'views', 'blocks' ), 'utf-8')  
+    
+    for (let blockfolder of blockfolders) {
+        if(blockfolder != '.DS_Store' && blockfolder != 'index.php') {
+            mix.sass(`views/blocks/${blockfolder}/style.scss`, 'assets/dist/blocks.css');
+          }
+       
+    }
+
 
