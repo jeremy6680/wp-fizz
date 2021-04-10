@@ -2,7 +2,7 @@
 /**
  * The template for displaying Author Archive pages
  *
- * Methods for TimberHelper can be found in the /lib sub-directory
+ * Methods for TimberHelper can be found in the /inc sub-directory
  *
  * @package  WordPress
  * @subpackage  Timber

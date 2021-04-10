@@ -50,13 +50,6 @@ if ( ! class_exists( 'Timber' ) ) {
 		}
 	);
 
-	add_filter(
-		'template_include',
-		function( $template ) {
-			return get_stylesheet_directory() . '/static/no-timber.html';
-		}
-	);
-	return;
 }
 
 
@@ -64,7 +57,7 @@ if ( ! class_exists( 'Timber' ) ) {
 /**
  * Sets the directories (inside your theme) to find .twig files
  */
-Timber::$dirname = array( 'templates/', 'templates/blocks/', 'templates/layouts/', 'templates/pages/', 'templates/document/' );
+Timber::$dirname = array( 'templates/document/', 'templates/components/', 'templates/blocks/', 'templates/partials/', 'templates/pages/'  );
 
 /**
  * By default, Timber does NOT autoescape values. Want to enable Twig's autoescape?
@@ -83,14 +76,13 @@ class StarterSite extends Timber\Site {
 		add_action( 'after_setup_theme', array( $this, 'theme_supports' ) );
 		add_filter( 'timber/context', array( $this, 'add_to_context' ) );
 		add_filter( 'timber/twig', array( $this, 'add_to_twig' ) );
+		add_filter( 'timber/acf-gutenberg-blocks-templates', array( $this, 'get_blocks_templates' ) );
 		add_action( 'init', array( $this, 'wpfb_load' ) );
 		add_action( 'init', array( $this, 'register_post_types' ) );
 		add_action( 'init', array( $this, 'register_taxonomies' ) );
 		add_action( 'init', array( $this, 'register_menus' ) );
 		add_action( 'init', array( $this, 'register_custom_fields' ) );
 		add_action('init', array($this, 'wpf_acf_utils') );
-		add_action('acf/init', array($this, 'wpf_register_blocks') );
-		add_action('acf/init', array($this, 'wpf_display_blocks') );
 		add_action('acf/init', array($this, 'wpf_block_fields') );
 		add_action('widgets_init', array($this, 'register_sidebars') );
 		parent::__construct();
@@ -113,39 +105,31 @@ class StarterSite extends Timber\Site {
 
 	/** This is where you can register custom post types. */
 	public function register_post_types() {
-		require('lib/custom-post-types.php');
+		require('inc/custom-post-types.php');
 	}
 	/** This is where you can register custom taxonomies. */
 	public function register_taxonomies() {
-		require('lib/taxonomies.php');
+		require('inc/taxonomies.php');
 	}
 
 	public function register_menus(){
-		require('lib/menus.php');
+		require('inc/menus.php');
 	}
 
 	public function register_custom_fields(){
-		require('lib/custom-fields.php');
+		require('inc/custom-fields.php');
 	}
 
 	public function register_sidebars() {
-		require('lib/widgets.php');
+		require('inc/widgets.php');
 	}
 
 	public function wpf_acf_utils() {
-		require('lib/acf-utils.php');
-	}
-
-	public function wpf_register_blocks() {
-		require('lib/blocks-register.php');
-	}
-
-	public function wpf_display_blocks() {
-		require('lib/blocks-callback.php');
+		require('inc/acf-utils.php');
 	}
 
 	public function wpf_block_fields() {
-		require('lib/block-fields.php');
+		require('inc/block-fields.php');
 	}
 
 	public function theme_supports() {
@@ -214,6 +198,14 @@ class StarterSite extends Timber\Site {
 		$twig->addFilter( new Twig\TwigFilter( 'myfoo', array( $this, 'myfoo' ) ) );
 		return $twig;
 	}
+
+	/** Change location where Timber ACF WP Blocks will look for twig files
+	 *
+	 * cf https://palmiak.github.io/timber-acf-wp-blocks/#/filters
+	 */
+	public function get_blocks_templates() {
+    	return ['templates/blocks']; // default: ['views/blocks']
+    }
 
 }
 
