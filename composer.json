@@ -10,6 +10,11 @@
         "palmiak/timber-acf-wp-blocks": "^1.14"
     },
     "license": "MIT",
+    "autoload":{
+      "files":[
+         "vendor/jeremy6680/wp-fizz-builder/index.php"
+      ]
+    },
     "repositories": [
         {
           "type": "composer",
