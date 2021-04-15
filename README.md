@@ -81,7 +81,7 @@ Besides, you need to be familiar with **Timber**, or at least be willing to lear
 
 1. **Clone the repo**
 
-When using the command line: first, go to your plugins folder:<br>
+When using the command line: first, go to your themes folder:<br>
 ```
 $ cd <myproject>/wp-content/themes
 ```
