@@ -21,3 +21,18 @@
         </div>
       </nav>
 {% endif %}
+
+{% if post.prev is not empty %}
+    <nav>
+      <div class="container">
+        <div class="pagination is-centered" role="navigation" aria-label="pagination">
+          {% if post.prev %}
+            <a href="{{ post.prev.link }}" class="pagination-previous">Previous article: {{ post.prev.title }}</a>
+          {% endif %}
+          {% if post.next %}
+            <a href="{{ post.next.link }}" class="pagination-next">Next article: {{ post.next.title }}</a>
+          {% endif %}
+        </div>
+      </div>
+    </nav>
+{% endif %}
